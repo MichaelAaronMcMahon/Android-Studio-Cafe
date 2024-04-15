@@ -1,6 +1,8 @@
 package com.example.rutgerscafe;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,4 +23,26 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void onDonutsClick(View view) {
+        Intent intent = new Intent(this, DonutsActivity.class);
+        startActivity(intent);
+    }
+    public void onCoffeeClick(View view) {
+        Intent intent = new Intent(this, CoffeeActivity.class);
+        startActivity(intent);
+    }
+    public void onSandwichClick(View view) {
+        Intent intent = new Intent(this, SandwichActivity.class);
+        startActivity(intent);
+    }
+    public void onAllOrdersClick(View view) {
+        Intent intent = new Intent(this, AllOrdersActivity.class);
+        startActivity(intent);
+    }
+    public void onCurrentOrderClick(View view) {
+        Intent intent = new Intent(this, CurrentOrderActivity.class);
+        startActivity(intent);
+    }
+
 }

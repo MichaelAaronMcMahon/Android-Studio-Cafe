@@ -21,6 +21,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DonutsActivity"
+            android:label = "DonutsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".CoffeeActivity"
+            android:label = "CoffeeActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".SandwichActivity"
+            android:label = "SandwichActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".CurrentOrderActivity"
+            android:label = "CurrentOrderActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".AllOrdersActivity"
+            android:label = "AllOrdersActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
     </application>
 
 </manifest>

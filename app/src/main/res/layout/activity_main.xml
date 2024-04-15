@@ -7,13 +7,64 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/donutsActivity"
+        android:layout_width="143dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="76dp"
+        android:onClick="onDonutsClick"
+        android:text="Donuts"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/coffeeActivity"
+        android:layout_width="135dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="36dp"
+        android:onClick="onCoffeeClick"
+        android:text="Coffee"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sandwichActivity"
+        android:layout_width="171dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="220dp"
+        android:onClick="onSandwichClick"
+        android:text="Sandwiches"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/currentOrderActivity"
+        android:layout_width="129dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="192dp"
+        android:onClick="onCurrentOrderClick"
+        android:text="Current Order"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donutsActivity" />
+
+    <Button
+        android:id="@+id/allOrdersActivity"
+        android:layout_width="134dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="28dp"
+        android:onClick="onAllOrdersClick"
+        android:text="All Orders"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

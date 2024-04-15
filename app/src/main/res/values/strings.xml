@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RutgersCafe</string>
+    <string name="allOrdersLabel">All Orders</string>
+    <string name="currentOrderLabel">Current Order</string>
+    <string name="donutLabel">Order Donuts</string>
+    <string name="coffeeLabel">Order Coffee</string>
+    <string name="sandwichLabel">Order Sandwiches</string>
 </resources>
