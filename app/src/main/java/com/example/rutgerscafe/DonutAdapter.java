@@ -67,5 +67,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
             parentLayout = itemView.findViewById(R.id.rowLayout);
 
         }
+
+
     }
 }
