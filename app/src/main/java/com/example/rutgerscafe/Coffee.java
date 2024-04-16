@@ -1,6 +1,6 @@
 package com.example.rutgerscafe;
 
-import javafx.collections.ObservableList;
+//import javafx.collections.ObservableList;
 
 /**
  * The Coffee object creates a coffee and stores the selected coffee combination
@@ -50,19 +50,19 @@ public class Coffee extends MenuItem{
      * @param addin
      * @return true or false
      */
-    public boolean addAddin(ObservableList<String> addin){
-
-        this.index = 0;
-        this.coffeeAddins = new CoffeeAddin[5];
-
-        for (String add:addin){
-            add = add.replaceAll("\\s+", "");
-            coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
-            index++;
-        }
-
-        return true;
-    }
+//    public boolean addAddin(ObservableList<String> addin){
+//
+//        this.index = 0;
+//        this.coffeeAddins = new CoffeeAddin[5];
+//
+//        for (String add:addin){
+//            add = add.replaceAll("\\s+", "");
+//            coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
+//            index++;
+//        }
+//
+//        return true;
+//    }
     /**
      * Overrides toString to return the selected combination of the coffee item in a nice format
      * @return String

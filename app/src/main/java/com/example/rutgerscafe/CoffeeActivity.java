@@ -11,4 +11,10 @@ public class CoffeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coffee);
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+    }
+
 }

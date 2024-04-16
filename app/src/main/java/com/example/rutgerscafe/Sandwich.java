@@ -1,7 +1,8 @@
 package com.example.rutgerscafe;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
+
 import java.lang.Math;
 /**
  * The Sandwich object creates a sandwich and stores the selected sandwich combination
@@ -63,22 +64,22 @@ public class Sandwich extends MenuItem{
      * @param addon
      * @return
      */
-    public boolean addAddon(ObservableList<String> addon){
-
-        this.containsCheese = false;
-        this.index = 0;
-        this.addons = new SandwichAddon[4];
-
-        for (String add:addon){
-            if (add.equalsIgnoreCase("Cheese")){
-                containsCheese = true;
-            }
-            this.addons[index] = SandwichAddon.valueOf(add.toUpperCase());
-            index++;
-        }
-
-        return true;
-    }
+//    public boolean addAddon(ObservableList<String> addon){
+//
+//        this.containsCheese = false;
+//        this.index = 0;
+//        this.addons = new SandwichAddon[4];
+//
+//        for (String add:addon){
+//            if (add.equalsIgnoreCase("Cheese")){
+//                containsCheese = true;
+//            }
+//            this.addons[index] = SandwichAddon.valueOf(add.toUpperCase());
+//            index++;
+//        }
+//
+//        return true;
+//    }
     /**
      * Method that calculates and returns the price for the sandwich item
      * @return double
