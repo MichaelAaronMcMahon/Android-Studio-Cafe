@@ -5,4 +5,18 @@
     <string name="donutLabel">Order Donuts</string>
     <string name="coffeeLabel">Order Coffee</string>
     <string name="sandwichLabel">Order Sandwiches</string>
+    <string name="addToOrder">Add To Order</string>
+    <string name="quantity">Quantity</string>
+    <string-array name="sp_quantity_items">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>

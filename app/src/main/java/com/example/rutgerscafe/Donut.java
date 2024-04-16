@@ -1,5 +1,7 @@
 package com.example.rutgerscafe;
 
+import android.media.Image;
+
 /**
  * The Donut object creates a donut and stores the selected donut combination
  * Extends MenuItem Class
@@ -10,6 +12,18 @@ public class Donut extends MenuItem{
     private DonutType donutType;
     private int quantity = 1;
     private int ID;
+    private int image;
+
+    public Donut(DonutType donutType, DonutFlavor donutFlavor, int image, int quantity){
+        this.donutType = donutType;
+        this.donutFlavor = donutFlavor;
+        this.image = image;
+        this.quantity = quantity;
+    }
+
+    public int getImage() {
+        return image;
+    }
 
     /**
      * Setter method that sets the Id of the donut item
@@ -64,7 +78,12 @@ public class Donut extends MenuItem{
      * @param donutFlavor
      */
     public void setDonutFlavor(DonutFlavor donutFlavor) {
+
         this.donutFlavor = donutFlavor;
+        if(donutFlavor.getDonutFlavor().equalsIgnoreCase("Boston Cream")){
+            this.image = R.drawable.boston;
+        }
+
     }
     /**
      * Setter method that sets the type of the donut item
