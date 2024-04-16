@@ -1,5 +1,7 @@
 package com.example.rutgerscafe;
 
+import java.util.ArrayList;
+
 /**
  * Global singleton class to keep track of current order being
  * made and all placed orders
@@ -8,8 +10,9 @@ package com.example.rutgerscafe;
 
 public final class OrderData {
     private static OrderData orderData;
+
     private Order currentOrder;
-    private Order[] allOrders;
+    private ArrayList<Order> allOrders;
     private OrderData(){}
     public static synchronized OrderData getInstance(){
         if(orderData == null){
@@ -20,7 +23,7 @@ public final class OrderData {
     public void setCurrentOrder(Order currentOrder){
         this.currentOrder = currentOrder;
     }
-    public void setAllOrders(Order[] allOrders){
+    public void setAllOrders(ArrayList<Order> allOrders){
         this.allOrders = allOrders;
     }
 }
