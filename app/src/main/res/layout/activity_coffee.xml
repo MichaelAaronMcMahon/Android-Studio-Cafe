@@ -19,33 +19,28 @@
 
     <Spinner
         android:id="@+id/cupSize"
-        android:layout_width="332dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="55dp"
-        android:spinnerMode="dropdown"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="50dp"
+        android:spinnerMode="dialog"
+        android:background="#CBC3E3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="332dp"
+        android:id="@+id/coffeeQty"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="591dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="592dp"
+        android:layout_marginEnd="50dp"
+        android:background="#CBC3E3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:layout_width="333dp"
-        android:layout_height="325dp"
-        android:layout_marginTop="251dp"
-        android:layout_marginEnd="109dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,39 +49,104 @@
         android:layout_width="294dp"
         android:layout_height="34dp"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="202dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="148dp"
         android:text="Coffee Addons"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/orderCoffeeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="350dp"
         android:layout_marginEnd="51dp"
         android:layout_marginBottom="32dp"
+        android:focusable="false"
         android:text="Place Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="189dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="686dp"
-        android:layout_marginEnd="253dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
+    <ListView
+        android:id="@+id/coffeeAddons"
+        android:layout_width="0dp"
+        android:layout_height="324dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="#CBC3E3"
+        app:layout_constraintBottom_toTopOf="@+id/coffeeQty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/subtotalCoffee"
+        android:layout_width="162dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="32dp"
+        android:text="Subtotal: $0"
+        android:textAlignment="viewEnd"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/orderCoffeeButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/dividerCoffee"
+        android:layout_width="476dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="15dp"
+        android:background="?android:attr/listDivider"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/orderCoffeeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="98dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="60dp"
+        android:text="Cup Size"
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="476dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="19dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/cofQty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="2dp"
+        android:text="Coffee Quantity"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/coffeeQty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeAddons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

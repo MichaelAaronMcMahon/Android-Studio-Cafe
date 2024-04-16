@@ -2,6 +2,8 @@ package com.example.rutgerscafe;
 
 //import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 /**
  * The Coffee object creates a coffee and stores the selected coffee combination
  * Extends MenuItem class
@@ -47,22 +49,23 @@ public class Coffee extends MenuItem{
     }
     /**
      * Method that adds the selected add-ins to the coffee item
-     * @param addin
+     * @param addins
      * @return true or false
      */
-//    public boolean addAddin(ObservableList<String> addin){
-//
-//        this.index = 0;
-//        this.coffeeAddins = new CoffeeAddin[5];
-//
-//        for (String add:addin){
-//            add = add.replaceAll("\\s+", "");
-//            coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
-//            index++;
-//        }
-//
-//        return true;
-//    }
+    public boolean addAddin(ArrayList<String> addins){
+
+        this.index = 0;
+        this.coffeeAddins = new CoffeeAddin[5];
+
+        for (String add:addins){
+            add = add.replaceAll("\\s+", "");
+            coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
+            index++;
+            //System.out.println(add);
+        }
+
+        return true;
+    }
     /**
      * Overrides toString to return the selected combination of the coffee item in a nice format
      * @return String
@@ -89,6 +92,7 @@ public class Coffee extends MenuItem{
         double addinMultiplier = this.index * 0.30;
 
         double unrounded = (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
+        System.out.println(unrounded);
         return (double) Math.round(unrounded * 100)/100;
     }
 }
