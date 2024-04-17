@@ -1,12 +1,7 @@
 package com.example.rutgerscafe;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.icu.util.ULocale;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ObservableArrayList;
 
@@ -114,7 +108,6 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
                 coffeeAddons.clearChoices();
                 items.notifyDataSetChanged(); //notify the attached observer the underlying data has been changed.
 
-
             }
         });
 
@@ -165,46 +158,4 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         items.notifyDataSetChanged(); //notify the attached observer the underlying data has been changed.
     }
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        //String cup = (String)parent.getItemAtPosition(position);
-//        //TextView textView = (TextView)cupSize.getSelectedView();
-//        String text = (String)parent.getItemAtPosition(position);
-//        //String cup = textView.getText().toString();
-//        System.out.println(text);
-//        //coffee.setCupSize(CoffeeCupSize.valueOf(cup.toUpperCase()));
-//        //System.out.println(coffee.toString());
-//        //String newSubtotal = "Subtotal: $" + coffee.price();
-//        //subtotal.setText(newSubtotal);
-//        items.notifyDataSetChanged(); //notify the attached observer the underlying data has been changed.
-//
-//    }
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//
-//
-//    } //can leave it empty
-//    protected String [] getAddons() {
-//        ArrayList<String> addons = new ArrayList<String>();
-//
-//        //String [] addons = new String[5];
-//        //int index = 0;
-//        for (int i = 0; i < coffeeAddons.getCount(); i++) {
-//            if (coffeeAddons.isItemChecked(i)) {
-//                // Do whatever you need to in here to get data from
-//                // the item at index i in the ListView
-//                //addons[index] ==
-//                addons.add(coffeeAddons.getc);
-//            }
-//        }
-//
-//        return names;
-//    }
-//    public ItemClicked getItem(int position){
-//        return items.get(position);
-//    }
-//    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
-//        super.onPointerCaptureChanged(hasCapture);
-//    }
 }
