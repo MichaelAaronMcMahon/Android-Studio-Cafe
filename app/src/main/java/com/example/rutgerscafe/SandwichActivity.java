@@ -50,73 +50,21 @@ public class SandwichActivity extends AppCompatActivity implements AdapterView.O
         sandwich.setQuantity(1);
         orderSandwichButton = findViewById(R.id.orderSandwichButton);
 
-        ArrayAdapter<String> sandwichBreadAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                breads
-        );
-        sandwichBreadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sandwichBread.setAdapter(sandwichBreadAdapter);
-        sandwichBread.setPrompt("Sandwich Bread");
+        sandwichBreadSetup();
+        sandwichQtySetup();
+        sandwichOptionSetup();
+        setOrderSandwichButton();
 
-        ArrayAdapter<String> sandwichQuantityAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                quantities
-        );
-        sandwichQuantityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sandwichQty.setAdapter(sandwichQuantityAdapter);
-        sandwichQty.setPrompt("Sandwich Quantity");
+        list = new ObservableArrayList<>();
+        Collections.addAll(list, addons); //add objects to the ObservableList
+        sandwichAddons.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        ArrayAdapter<String> sandwichProteinAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                proteins
-        );
-        sandwichProteinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sandwichOption.setAdapter(sandwichProteinAdapter);
-        sandwichOption.setPrompt("Sandwich Protein");
+        items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
+        sandwichAddons.setAdapter(items); //set the adapter of the ListView to the source
+        sandwichAddons.setOnItemClickListener(this); //add a listener to the ListView
 
-        sandwichBread.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String)parent.getItemAtPosition(position);
-                System.out.println(item);
-
-                sandwich.setBread(item);
-                String newSubTotal = "Subtotal: $" + sandwich.price();
-                subtotal.setText(newSubTotal);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        sandwichQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String item = (String)parent.getItemAtPosition(position);
-                System.out.println(item);
-
-                sandwich.setQuantity(Integer.parseInt(item));
-                String newSubTotal = "Subtotal: $" + sandwich.price();
-                subtotal.setText(newSubTotal);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        sandwichOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String item = (String)parent.getItemAtPosition(position);
-                System.out.println(item);
-
-                sandwich.setOption(item);
-                String newSubTotal = "Subtotal: $" + sandwich.price();
-                subtotal.setText(newSubTotal);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
+    }
+    protected void setOrderSandwichButton(){
         orderSandwichButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -140,15 +88,77 @@ public class SandwichActivity extends AppCompatActivity implements AdapterView.O
 
             }
         });
+    }
+    protected void sandwichOptionSetup(){
+        ArrayAdapter<String> sandwichProteinAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                proteins
+        );
+        sandwichProteinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sandwichOption.setAdapter(sandwichProteinAdapter);
+        sandwichOption.setPrompt("Sandwich Protein");
 
-        list = new ObservableArrayList<>();
-        Collections.addAll(list, addons); //add objects to the ObservableList
-        sandwichAddons.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        sandwichOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
-        sandwichAddons.setAdapter(items); //set the adapter of the ListView to the source
-        sandwichAddons.setOnItemClickListener(this); //add a listener to the ListView
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
 
+                sandwich.setOption(item);
+                String newSubTotal = "Subtotal: $" + sandwich.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+    protected void sandwichQtySetup(){
+        ArrayAdapter<String> sandwichQuantityAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                quantities
+        );
+        sandwichQuantityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sandwichQty.setAdapter(sandwichQuantityAdapter);
+        sandwichQty.setPrompt("Sandwich Quantity");
+
+        sandwichQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
+
+                sandwich.setQuantity(Integer.parseInt(item));
+                String newSubTotal = "Subtotal: $" + sandwich.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+    protected void sandwichBreadSetup(){
+        ArrayAdapter<String> sandwichBreadAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                breads
+        );
+        sandwichBreadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sandwichBread.setAdapter(sandwichBreadAdapter);
+        sandwichBread.setPrompt("Sandwich Bread");
+
+        sandwichBread.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
+
+                sandwich.setBread(item);
+                String newSubTotal = "Subtotal: $" + sandwich.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
     public void addToast(){
         OrderData orderData = OrderData.getInstance();

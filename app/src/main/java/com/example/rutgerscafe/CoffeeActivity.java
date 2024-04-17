@@ -46,50 +46,20 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         coffee.setQuantity(1);
         orderCoffeeButton = findViewById(R.id.orderCoffeeButton);
 
-        ArrayAdapter<String> coffeeSizeAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                cupSizes
-        );
-        coffeeSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cupSize.setAdapter(coffeeSizeAdapter);
-        cupSize.setPrompt("Cup Size");
+        coffeeSizeSetup();
+        coffeeQtySetup();
+        setOrderCoffeeButton();
 
-        ArrayAdapter<String> coffeeQuantityAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                quantities
-        );
-        coffeeQuantityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cofQty.setAdapter(coffeeQuantityAdapter);
-        cofQty.setPrompt("Coffee Quantity");
+        list = new ObservableArrayList<>();
+        Collections.addAll(list, addons); //add objects to the ObservableList
+        coffeeAddons.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        cupSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String)parent.getItemAtPosition(position);
-                System.out.println(item);
+        items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
+        coffeeAddons.setAdapter(items); //set the adapter of the ListView to the source
+        coffeeAddons.setOnItemClickListener(this); //add a listener to the ListView
 
-                coffee.setCupSize(CoffeeCupSize.valueOf(item.toUpperCase()));
-                String newSubTotal = "Subtotal: $" + coffee.price();
-                subtotal.setText(newSubTotal);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        cofQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String item = (String)parent.getItemAtPosition(position);
-                System.out.println(item);
-
-                coffee.setQuantity(Integer.parseInt(item));
-                String newSubTotal = "Subtotal: $" + coffee.price();
-                subtotal.setText(newSubTotal);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
+    }
+    protected void setOrderCoffeeButton(){
         orderCoffeeButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -110,22 +80,53 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
 
             }
         });
-
-        list = new ObservableArrayList<>();
-        Collections.addAll(list, addons); //add objects to the ObservableList
-        coffeeAddons.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-        items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
-        coffeeAddons.setAdapter(items); //set the adapter of the ListView to the source
-        coffeeAddons.setOnItemClickListener(this); //add a listener to the ListView
-        //LayoutInflater inflater = LayoutInflater.from(this);
-        //View view = inflater.inflate(R.layout.activity_coffee, parent, false);
-        //setAddButtonOnClick(new View(this));
     }
+    protected void coffeeSizeSetup(){
+        ArrayAdapter<String> coffeeSizeAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                cupSizes
+        );
+        coffeeSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cupSize.setAdapter(coffeeSizeAdapter);
+        cupSize.setPrompt("Cup Size");
 
-    @Override
-    protected void onStart(){
-        super.onStart();
+        cupSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
+
+                coffee.setCupSize(CoffeeCupSize.valueOf(item.toUpperCase()));
+                String newSubTotal = "Subtotal: $" + coffee.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+    protected void coffeeQtySetup(){
+        ArrayAdapter<String> coffeeQuantityAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                quantities
+        );
+        coffeeQuantityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cofQty.setAdapter(coffeeQuantityAdapter);
+        cofQty.setPrompt("Coffee Quantity");
+
+        cofQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
+
+                coffee.setQuantity(Integer.parseInt(item));
+                String newSubTotal = "Subtotal: $" + coffee.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void addToast(){
