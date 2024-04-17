@@ -23,9 +23,11 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
     private TextView subtotal;
     private ListView coffeeAddons;
     private Spinner cupSize;
+    private Spinner cofQty;
     private ObservableArrayList<String> list;
     private String [] addons = {"Sweet Cream", "French Vanilla", "Irish Cream", "Caramel", "Mocha"};
     private String [] cupSizes = {"Short", "Tall", "Grande", "Venti"};
+    private String [] quantities = {"1", "2", "3", "4", "5"};
     private ArrayAdapter<String> items;
     private Coffee coffee;
     private ArrayList<String> addonList;
@@ -40,6 +42,7 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         subtotal = (TextView) findViewById(R.id.subtotalCoffee);
         coffeeAddons = findViewById(R.id.coffeeAddons);
         cupSize = findViewById(R.id.cupSize);
+        cofQty = findViewById(R.id.coffeeQty);
         coffee.setQuantity(1);
 
         ArrayAdapter<String> coffeeSizeAdapter = new ArrayAdapter<String>(
@@ -51,12 +54,34 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         cupSize.setAdapter(coffeeSizeAdapter);
         cupSize.setPrompt("Cup Size");
 
+        ArrayAdapter<String> coffeeQuantityAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_spinner_item,
+                quantities
+        );
+        coffeeQuantityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cofQty.setAdapter(coffeeQuantityAdapter);
+        cofQty.setPrompt("Coffee Quantity");
+
         cupSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String)parent.getItemAtPosition(position);
                 System.out.println(item);
 
                 coffee.setCupSize(CoffeeCupSize.valueOf(item.toUpperCase()));
+                String newSubTotal = "Subtotal: $" + coffee.price();
+                subtotal.setText(newSubTotal);
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        cofQty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String)parent.getItemAtPosition(position);
+                System.out.println(item);
+
+                coffee.setQuantity(Integer.parseInt(item));
                 String newSubTotal = "Subtotal: $" + coffee.price();
                 subtotal.setText(newSubTotal);
             }

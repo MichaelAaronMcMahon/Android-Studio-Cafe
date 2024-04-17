@@ -61,7 +61,6 @@ public class Coffee extends MenuItem{
             add = add.replaceAll("\\s+", "");
             coffeeAddins[index] = CoffeeAddin.valueOf(add.toUpperCase());
             index++;
-            //System.out.println(add);
         }
 
         return true;
@@ -92,7 +91,7 @@ public class Coffee extends MenuItem{
         double addinMultiplier = this.index * 0.30;
 
         double unrounded = (cupPriceMultiplier + addinMultiplier + 1.99) * quantity;
-        System.out.println(unrounded);
+        //System.out.println(unrounded);
         return (double) Math.round(unrounded * 100)/100;
     }
 }
