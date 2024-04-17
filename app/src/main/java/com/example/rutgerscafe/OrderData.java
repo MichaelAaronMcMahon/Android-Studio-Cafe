@@ -17,13 +17,15 @@ public final class OrderData {
     public static synchronized OrderData getInstance(){
         if(orderData == null){
             orderData = new OrderData();
+            orderData.setCurrentOrder(new Order(orderData.orderNumber));
+            orderData.orderNumber++;
         }
         return orderData;
     }
-    public void startNewOrder(){
-        this.currentOrder = new Order(orderNumber);
-        orderNumber++;
-    }
+    //public void startNewOrder(){
+    //    this.currentOrder = new Order(orderNumber);
+    //    orderNumber++;
+    //}
     public void setCurrentOrder(Order currentOrder){
         this.currentOrder = currentOrder;
     }

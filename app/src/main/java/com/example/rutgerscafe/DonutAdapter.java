@@ -91,12 +91,14 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
                     alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             OrderData orderData = OrderData.getInstance();
-                            if(orderData.getCurrentOrder() == null){
-                                orderData.startNewOrder();
-                            }
+                            //if(orderData.getCurrentOrder() == null){
+                            //    orderData.startNewOrder();
+                            //}
                             donut.setQuantity(Integer.parseInt(String.valueOf(sp_quantity.getSelectedItem())));
                             orderData.getCurrentOrder().add(donut);
-                            Toast.makeText(itemView.getContext(), orderData.getCurrentOrder().getMenuList()[0].toString(),
+                            Toast.makeText(itemView.getContext(),
+                                    orderData.getCurrentOrder().getMenuList()[orderData.getCurrentOrder().getAddIndex()-1].toString()
+                                    +" added",
                                     Toast.LENGTH_LONG).show();
                         }
                         //handle the "NO" click
