@@ -113,9 +113,6 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
         coffeeAddons.setAdapter(items); //set the adapter of the ListView to the source
         coffeeAddons.setOnItemClickListener(this); //add a listener to the ListView
-        //LayoutInflater inflater = LayoutInflater.from(this);
-        //View view = inflater.inflate(R.layout.activity_coffee, parent, false);
-        //setAddButtonOnClick(new View(this));
     }
 
     @Override
