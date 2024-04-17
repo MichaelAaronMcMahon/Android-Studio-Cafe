@@ -1,4 +1,6 @@
 package com.example.rutgerscafe;
+import static java.security.AccessController.getContext;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -62,6 +64,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
         private Spinner sp_quantity;
         private Donut donut;
         private int selectedQuantity;
+        private double subtotal = 0.0;
 
         public DonutHolder(@NonNull View itemView) {
 
@@ -95,6 +98,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
                             //    orderData.startNewOrder();
                             //}
                             donut.setQuantity(Integer.parseInt(String.valueOf(sp_quantity.getSelectedItem())));
+                            subtotal += donut.price();
                             orderData.getCurrentOrder().add(donut);
                             Toast.makeText(itemView.getContext(),
                                     orderData.getCurrentOrder().getMenuList()[orderData.getCurrentOrder().getAddIndex()-1].toString()
