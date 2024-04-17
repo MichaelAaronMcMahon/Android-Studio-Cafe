@@ -13,12 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class DonutsActivity extends AppCompatActivity {
 
     private RecyclerView donutRecycler;
     private ArrayList<Donut> donuts = new ArrayList<Donut>();
+    private TextView tv_donutSubtotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,9 @@ public class DonutsActivity extends AppCompatActivity {
         DonutAdapter donutAdapter = new DonutAdapter(this, donuts);
         donutRecycler.setAdapter(donutAdapter);
         donutRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+    private void setTv_donutSubtotal(String subtotal){
+        this.tv_donutSubtotal.setText(subtotal);
     }
 
     private void setUpDonuts(){

@@ -1,17 +1,22 @@
 package com.example.rutgerscafe;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.icu.util.ULocale;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ObservableArrayList;
 
@@ -31,6 +36,7 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
     private ArrayAdapter<String> items;
     private Coffee coffee;
     private ArrayList<String> addonList;
+    private Button orderCoffeeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         cupSize = findViewById(R.id.cupSize);
         cofQty = findViewById(R.id.coffeeQty);
         coffee.setQuantity(1);
+        orderCoffeeButton = findViewById(R.id.orderCoffeeButton);
 
         ArrayAdapter<String> coffeeSizeAdapter = new ArrayAdapter<String>(
                 this,
@@ -89,6 +96,16 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        orderCoffeeButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                OrderData orderData = OrderData.getInstance();
+                orderData.getCurrentOrder().add(coffee);
+                addToast();
+            }
+        });
+
         list = new ObservableArrayList<>();
         Collections.addAll(list, addons); //add objects to the ObservableList
         coffeeAddons.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -96,11 +113,22 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
         coffeeAddons.setAdapter(items); //set the adapter of the ListView to the source
         coffeeAddons.setOnItemClickListener(this); //add a listener to the ListView
+        //LayoutInflater inflater = LayoutInflater.from(this);
+        //View view = inflater.inflate(R.layout.activity_coffee, parent, false);
+        //setAddButtonOnClick(new View(this));
     }
 
     @Override
     protected void onStart(){
         super.onStart();
+    }
+
+    public void addToast(){
+        OrderData orderData = OrderData.getInstance();
+        Toast.makeText(this,
+                        orderData.getCurrentOrder().getMenuList()[orderData.getCurrentOrder().getAddIndex()-1].toString()
+                                +" added",
+                        Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -126,6 +154,7 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         }
         items.notifyDataSetChanged(); //notify the attached observer the underlying data has been changed.
     }
+
 //    @Override
 //    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //        //String cup = (String)parent.getItemAtPosition(position);
