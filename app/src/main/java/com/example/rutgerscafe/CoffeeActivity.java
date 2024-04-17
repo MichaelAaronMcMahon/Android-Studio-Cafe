@@ -103,6 +103,18 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
                 OrderData orderData = OrderData.getInstance();
                 orderData.getCurrentOrder().add(coffee);
                 addToast();
+                coffee = new Coffee();
+                coffee.setQuantity(1);
+                coffee.setCupSize(CoffeeCupSize.SHORT);
+                addonList = new ArrayList<>();
+                String newSubTotal = "Subtotal: $" + coffee.price();
+                subtotal.setText(newSubTotal);
+                cupSize.setSelection(0);
+                cofQty.setSelection(0);
+                coffeeAddons.clearChoices();
+                items.notifyDataSetChanged(); //notify the attached observer the underlying data has been changed.
+
+
             }
         });
 
@@ -113,6 +125,9 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
         coffeeAddons.setAdapter(items); //set the adapter of the ListView to the source
         coffeeAddons.setOnItemClickListener(this); //add a listener to the ListView
+        //LayoutInflater inflater = LayoutInflater.from(this);
+        //View view = inflater.inflate(R.layout.activity_coffee, parent, false);
+        //setAddButtonOnClick(new View(this));
     }
 
     @Override
