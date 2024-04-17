@@ -28,14 +28,13 @@
                 android:id="@+id/tv_flavor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="4dp"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/im_item"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageView
                 android:id="@+id/im_item"
@@ -51,12 +50,11 @@
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_flavor"
                 app:layout_constraintTop_toBottomOf="@+id/tv_flavor" />
-
 
             <Button
                 android:id="@+id/btn_add"
@@ -77,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
-                android:layout_marginTop="108dp"
+                android:layout_marginTop="80dp"
                 android:text="@string/quantity"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toEndOf="@+id/im_item"
@@ -85,11 +83,16 @@
 
             <Spinner
                 android:id="@+id/sp_quantity"
-                android:layout_width="48dp"
-                android:layout_height="25dp"
+                android:layout_width="100dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="132dp"
+                android:layout_marginTop="96dp"
+                android:backgroundTint="#FFFFFF"
+                android:backgroundTintMode="multiply"
                 android:entries="@array/sp_quantity_items"
+                android:foregroundTint="#FFFFFF"
+                android:foregroundTintMode="src_over"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="@+id/tv_price"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
