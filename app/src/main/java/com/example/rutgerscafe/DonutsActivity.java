@@ -21,19 +21,34 @@ public class DonutsActivity extends AppCompatActivity {
 
     private RecyclerView donutRecycler;
     private ArrayList<Donut> donuts = new ArrayList<Donut>();
+    private double subtotal;
     private TextView tv_donutSubtotal;
+    OrderData orderData = OrderData.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        this.subtotal = 0.0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
         RecyclerView donutRecycler = findViewById(R.id.donutRecycler);
         setUpDonuts();
-        DonutAdapter donutAdapter = new DonutAdapter(this, donuts);
+        DonutAdapter donutAdapter = new DonutAdapter(this, donuts, this);
         donutRecycler.setAdapter(donutAdapter);
         donutRecycler.setLayoutManager(new LinearLayoutManager(this));
+        //
+        String sub = "sss";
+        this.tv_donutSubtotal = (TextView) findViewById(R.id.tv_donutSubtotal);
+        orderData.setDonutsActivity(this);
+        //tv_donutSubtotal.setText("hh");
+
     }
-    private void setTv_donutSubtotal(String subtotal){
-        this.tv_donutSubtotal.setText(subtotal);
+    public void setTv_donutSubtotal(double st){
+        this.subtotal += st;
+        //tv_donutSubtotal.setText(String.valueOf(4.0));
+        //.tv_donutSubtotal.setText("h");
+        //int total = 0;
+
+        this.tv_donutSubtotal.setText(String.valueOf(this.subtotal));
     }
 
     private void setUpDonuts(){

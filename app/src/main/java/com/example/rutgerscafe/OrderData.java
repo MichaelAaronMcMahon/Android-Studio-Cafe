@@ -13,6 +13,8 @@ public final class OrderData {
     private int orderNumber = 1;
     private Order currentOrder;
     private ArrayList<Order> allOrders;
+    private DonutsActivity donutsActivity;
+    private double donutsSubTotal;
     private OrderData(){}
     public static synchronized OrderData getInstance(){
         if(orderData == null){
@@ -27,11 +29,30 @@ public final class OrderData {
     //    this.currentOrder = new Order(orderNumber);
     //    orderNumber++;
     //}
+    public void setDonutsSubtotal(double subtotal){
+        this.donutsActivity.setTv_donutSubtotal(subtotal);
+    }
     public void setCurrentOrder(Order currentOrder){
         this.currentOrder = currentOrder;
     }
     public void setAllOrders(ArrayList<Order> allOrders){
         this.allOrders = allOrders;
+    }
+
+    public DonutsActivity getDonutsActivity() {
+        return donutsActivity;
+    }
+
+    public void setDonutsActivity(DonutsActivity donutsActivity) {
+        this.donutsActivity = donutsActivity;
+    }
+
+    public double getDonutsSubTotal() {
+        return donutsSubTotal;
+    }
+
+    public void setDonutsSubTotal(double donutsSubTotal) {
+        this.donutsSubTotal = donutsSubTotal;
     }
 
     public Order getCurrentOrder() {

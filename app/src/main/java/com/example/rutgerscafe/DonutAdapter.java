@@ -29,10 +29,16 @@ import java.util.ArrayList;
 public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder> {
     private Context context;
     private ArrayList<Donut> donuts;
+    private DonutsActivity donutsActivity;
 
-    public DonutAdapter(Context context, ArrayList<Donut> donuts) {
+    public DonutAdapter(Context context, ArrayList<Donut> donuts, DonutsActivity donutsActivity) {
         this.context = context;
         this.donuts = donuts;
+        this.donutsActivity = donutsActivity;
+    }
+
+    public void updateSubtotal(double subtotal){
+        this.donutsActivity.setTv_donutSubtotal(subtotal);
     }
 
     @NonNull
@@ -49,6 +55,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
         holder.tv_price.setText(String.valueOf(donuts.get(position).price()));
         holder.im_item.setImageResource(donuts.get(position).getImage());
         holder.donut = donuts.get(position);
+
     }
 
     @Override
@@ -64,6 +71,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
         private Spinner sp_quantity;
         private Donut donut;
         private int selectedQuantity;
+        private DonutAdapter donutAdapter;
         private double subtotal = 0.0;
 
         public DonutHolder(@NonNull View itemView) {
@@ -76,7 +84,9 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
             sp_quantity = itemView.findViewById(R.id.sp_quantity);
             parentLayout = itemView.findViewById(R.id.rowLayout);
             setAddButtonOnClick(itemView);
+
         }
+
         /**
          * Set the onClickListener for the button on each row.
          * Clicking on the button will create an AlertDialog with the options of YES/NO.
@@ -99,6 +109,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
                             //}
                             donut.setQuantity(Integer.parseInt(String.valueOf(sp_quantity.getSelectedItem())));
                             subtotal += donut.price();
+                            orderData.setDonutsSubtotal(donut.price());
                             orderData.getCurrentOrder().add(donut);
                             Toast.makeText(itemView.getContext(),
                                     orderData.getCurrentOrder().getMenuList().get(orderData.getCurrentOrder().getAddIndex() - 1).toString()
@@ -120,11 +131,3 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
     }
 }
 
-        /*
-            btn_add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }*/
