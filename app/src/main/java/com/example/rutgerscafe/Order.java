@@ -23,6 +23,27 @@ public class Order {
         //this.menuList = new MenuItem[1];
         this.menuList = new ArrayList<MenuItem>();
     }
+    public String getTotalPrice(){
+        double totalPrice = 0.0;
+        for(int i=0; i<this.addIndex; i++){
+            totalPrice += this.menuList.get(i).price();
+        }
+        return String.format("%.2f", (totalPrice + (totalPrice * 0.06625)));
+    }
+    public String getSubtotalPrice(){
+        double totalPrice = 0.0;
+        for(int i=0; i<this.addIndex; i++){
+            totalPrice += this.menuList.get(i).price();
+        }
+        return String.format("%.2f", totalPrice);
+    }
+    public String getSalesTaxPrice(){
+        double totalPrice = 0.0;
+        for(int i=0; i<this.addIndex; i++){
+            totalPrice += this.menuList.get(i).price();
+        }
+        return String.format("%.2f", (totalPrice * 0.06625));
+    }
     /**
      * Getter method that returns the current index
      * @return int

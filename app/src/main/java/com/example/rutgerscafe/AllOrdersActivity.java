@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,20 +23,24 @@ public class AllOrdersActivity extends AppCompatActivity {
     private ArrayList<MenuItem> menuList;
     private ArrayAdapter<MenuItem> menuItemAdapter;
     private Order removeOrder;
+    private TextView tv_orderTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_orders);
+        this.tv_orderTotal = (TextView) findViewById(R.id.tv_orderTotal);
         orderListAO = findViewById(R.id.orderListAO);
         menuItemsAO = findViewById(R.id.menuItemsAO);
         cancelOrderAO = findViewById(R.id.cancelOrderAO);
+
         setOrderListAO();
         orderListAO.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Order selectedOrder = (Order) parent.getItemAtPosition(position);
                 setMenuItemsAO(selectedOrder);
+                tv_orderTotal.setText(selectedOrder.getTotalPrice());
                 removeOrder = selectedOrder;
             }
         });
@@ -44,6 +49,8 @@ public class AllOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 orderData.getAllOrders().remove(removeOrder);
                 setOrderListAO();
+                setMenuItemsAO(new Order(-1));
+                tv_orderTotal.setText(" ");
             }
         });
     }

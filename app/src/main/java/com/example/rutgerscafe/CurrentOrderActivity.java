@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private ArrayList<MenuItem> listItems;
     private ArrayAdapter<MenuItem> currentAdapter;
     private MenuItem removeItem;
+    private TextView tv_subtotal;
+    private TextView tv_salesTax;
+    private TextView tv_total;
     OrderData orderData = OrderData.getInstance();
     public void setLv_currentOrder(){
         //listItems = new ArrayList<MenuItem>(Arrays.asList(orderData.getCurrentOrder().getMenuList()));
@@ -30,6 +34,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_single_choice, listItems);
         lv_currentOrder.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
         lv_currentOrder.setAdapter(currentAdapter);
+        tv_subtotal = (TextView) findViewById(R.id.tv_subtotal);
+        tv_salesTax = (TextView) findViewById(R.id.tv_salesTax);
+        tv_total = (TextView) findViewById(R.id.tv_total);
     }
 
     public void makeToast(){
@@ -42,6 +49,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 orderData.getAllOrders().get(0).toString(),
                 Toast.LENGTH_LONG).show();
     }*/
+    public void setPrices(){
+        tv_subtotal.setText(orderData.getCurrentOrder().getSubtotalPrice());
+        tv_salesTax.setText(orderData.getCurrentOrder().getSalesTaxPrice());
+        tv_total.setText(orderData.getCurrentOrder().getTotalPrice());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +64,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         bt_placeOrder = findViewById(R.id.bt_placeOrder);
         bt_removeItem = findViewById(R.id.bt_removeItem);
         setLv_currentOrder();
+        setPrices();
         lv_currentOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 removeItem = (MenuItem) parent.getItemAtPosition(position);
-                makeToast();
             }
         });
         bt_removeItem.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +76,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 orderData.getCurrentOrder().remove(removeItem);
                 setLv_currentOrder();
+                setPrices();
             }
         });
         bt_placeOrder.setOnClickListener(new View.OnClickListener() {

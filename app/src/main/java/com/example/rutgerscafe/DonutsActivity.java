@@ -47,8 +47,7 @@ public class DonutsActivity extends AppCompatActivity {
         //tv_donutSubtotal.setText(String.valueOf(4.0));
         //.tv_donutSubtotal.setText("h");
         //int total = 0;
-
-        this.tv_donutSubtotal.setText(String.valueOf(this.subtotal));
+        this.tv_donutSubtotal.setText(String.format("%.2f", this.subtotal));
     }
 
     private void setUpDonuts(){

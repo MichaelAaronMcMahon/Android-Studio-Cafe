@@ -87,13 +87,10 @@
         android:id="@+id/totalPriceAO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="Total Price of Selected Order: $0"
+        android:layout_marginTop="40dp"
+        android:text="Total Price of Selected Order: "
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuItemsAO" />
 
@@ -118,4 +115,14 @@
         app:layout_constraintBottom_toTopOf="@+id/totalPriceAO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_orderTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="76dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/divider4"
+        app:layout_constraintTop_toBottomOf="@+id/menuItemsAO" />
 </androidx.constraintlayout.widget.ConstraintLayout>

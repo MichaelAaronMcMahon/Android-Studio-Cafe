@@ -7,9 +7,11 @@
     <string name="sandwichLabel">Order Sandwiches</string>
     <string name="addToOrder">Add To Order</string>
     <string name="quantity">Quantity</string>
-    <string name="Subtotal">Subtotal</string>
+    <string name="Subtotal">Subtotal:</string>
     <string name="removeMenuItem">Remove Selected Item</string>
     <string name="placeOrder">Place Order</string>
+    <string name="salesTax">Sales Tax:</string>
+    <string name="total">Total:</string>
     <string-array name="sp_quantity_items">
         <item>1</item>
         <item>2</item>
