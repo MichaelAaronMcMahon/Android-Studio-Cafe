@@ -10,7 +10,7 @@ Cafe Order Management System that manages the orders at RU Cafe.
   - This project also lets the user enter a shopping cart which temporarily holds the menu items added so far. In this cart there is a list displaying all the menu items added so far, as well as their respective information such as addons or quantity. The user can select an item from the cart and remove it by pressing the remove button below. The cart also displays the subtotal, tax, and total price of the combined items in the cart. Finally, there is a button that lets the user place the order.
 
   ### **View All Orders**
-  - Lastly, this project lets the user enter this option to display, in a list, all the orders that have been placed previously. Like the previous description, this option would also displays the subtotal, tax, and total price of the combined items of each order. The user can also select an order from the list and cancel it. 
+  - Lastly, this project lets the user enter this option to display, in a list, all the orders that have been placed previously. This option would also displays the total price of the combined items of each order. The user can also select an order from the list and cancel it. 
 
 ## Authors
 [@Steven Rodriguez](https://github.com/BruhBruh555)
