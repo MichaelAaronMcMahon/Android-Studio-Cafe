@@ -101,7 +101,7 @@ public class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.DonutHolder>
                             subtotal += donut.price();
                             orderData.getCurrentOrder().add(donut);
                             Toast.makeText(itemView.getContext(),
-                                    orderData.getCurrentOrder().getMenuList()[orderData.getCurrentOrder().getAddIndex()-1].toString()
+                                    orderData.getCurrentOrder().getMenuList().get(orderData.getCurrentOrder().getAddIndex() - 1).toString()
                                     +" added",
                                     Toast.LENGTH_LONG).show();
                         }

@@ -1,5 +1,5 @@
 package com.example.rutgerscafe;
-
+import java.util.ArrayList;
 /**
  * The Order Class creates an order object and stores the information of the current order
  * @author Steven Rodriguez, Michael McMahon
@@ -7,7 +7,8 @@ package com.example.rutgerscafe;
 public class Order {
 
     private int orderNumber;
-    private MenuItem [] menuList;
+    //private MenuItem [] menuList;
+    private ArrayList<MenuItem> menuList;
     private int addIndex = 0;
     //an int which is assigned to each added menuitem, increasing with each addition
     //st each menu item has a unique ID
@@ -19,7 +20,8 @@ public class Order {
      */
     public Order(int orderNumber){
         this.orderNumber = orderNumber;
-        this.menuList = new MenuItem[1];
+        //this.menuList = new MenuItem[1];
+        this.menuList = new ArrayList<MenuItem>();
     }
     /**
      * Getter method that returns the current index
@@ -39,7 +41,10 @@ public class Order {
      * Getter method that returns the list of menu items
      * @return MenuItem[]
      */
-    public MenuItem[] getMenuList() {
+   /* public MenuItem[] getMenuList() {
+        return menuList;
+    }*/
+    public ArrayList<MenuItem> getMenuList() {
         return menuList;
     }
     /**
@@ -47,13 +52,18 @@ public class Order {
      * @param menuItem
      */
     public void add(MenuItem menuItem){
-        if (this.addIndex == this.menuList.length){
+        /*if (this.addIndex == this.menuList.length){
             grow();
         }
         menuItem.setID(this.menuItemId);
         this.menuItemId ++;
         menuList[this.addIndex] = menuItem;
+        this.addIndex ++;*/
+        menuItem.setID(this.menuItemId);
+        this.menuItemId ++;
+        this.menuList.add(menuItem);
         this.addIndex ++;
+
     }
     /**
      * Method that adds multiple menu items to the array
@@ -69,8 +79,7 @@ public class Order {
      */
     public void remove(MenuItem menuItem){
 
-        int removeID = menuItem.getID();
-
+        /*int removeID = menuItem.getID();
         for(int i = 0; i < this.addIndex; i++){
 
             if (this.menuList[i].getID() == removeID){
@@ -82,7 +91,9 @@ public class Order {
                 }
                 this.addIndex --;
             }
-        }
+        }*/
+        this.menuList.remove(menuItem);
+        this.addIndex--;
     }
     /**
      * Creates a new array with a length 1 space longer and copies the original array to it.
@@ -90,14 +101,14 @@ public class Order {
      */
     private void grow(){
 
-        MenuItem [] replacement = new MenuItem[menuList.length + 1];
+        //MenuItem [] replacement = new MenuItem[menuList.length + 1];
 
-        int i = 0;
-        for(MenuItem item:menuList){
-            replacement[i] = item;
-            i ++;
-        }
-        this.menuList = replacement;
+       // int i = 0;
+       // for(MenuItem item:menuList){
+       //     replacement[i] = item;
+      //      i ++;
+      //  }
+       // this.menuList = replacement;
 
     } //helper method to increase the capacity by 1
     /**

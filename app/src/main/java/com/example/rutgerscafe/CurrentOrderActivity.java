@@ -24,7 +24,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private MenuItem removeItem;
     OrderData orderData = OrderData.getInstance();
     public void setLv_currentOrder(){
-        listItems = new ArrayList<MenuItem>(Arrays.asList(orderData.getCurrentOrder().getMenuList()));
+        //listItems = new ArrayList<MenuItem>(Arrays.asList(orderData.getCurrentOrder().getMenuList()));
+        listItems = orderData.getCurrentOrder().getMenuList();
         currentAdapter = new ArrayAdapter<MenuItem>(this,
                 android.R.layout.simple_list_item_single_choice, listItems);
         lv_currentOrder.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
@@ -36,6 +37,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 removeItem.toString(),
                 Toast.LENGTH_LONG).show();
     }
+    /*public void placeToast(){
+        Toast.makeText(this,
+                orderData.getAllOrders().get(0).toString(),
+                Toast.LENGTH_LONG).show();
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +52,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
         bt_placeOrder = findViewById(R.id.bt_placeOrder);
         bt_removeItem = findViewById(R.id.bt_removeItem);
         setLv_currentOrder();
-
-        /*lv_currentOrder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //removeItem = (MenuItem) parent.getItemAtPosition(position);
-                //makeToast();
-                orderData.getCurrentOrder().remove((MenuItem) parent.getItemAtPosition(position));
-                setLv_currentOrder();
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });*/
         lv_currentOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -71,8 +63,16 @@ public class CurrentOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 orderData.getCurrentOrder().remove(removeItem);
-                //setLv_currentOrder();
-                listItems = new ArrayList<MenuItem>(Arrays.asList(orderData.getCurrentOrder().getMenuList()));
+                setLv_currentOrder();
+            }
+        });
+        bt_placeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orderData.getAllOrders().add(orderData.getCurrentOrder());
+                orderData.incrementOrderNumber();
+                orderData.setCurrentOrder(new Order(orderData.getOrderNumber()));
+                //placeToast();
             }
         });
 

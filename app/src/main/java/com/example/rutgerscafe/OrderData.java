@@ -18,7 +18,8 @@ public final class OrderData {
         if(orderData == null){
             orderData = new OrderData();
             orderData.setCurrentOrder(new Order(orderData.orderNumber));
-            orderData.orderNumber++;
+            orderData.setAllOrders(new ArrayList<Order>());
+            //orderData.orderNumber++;
         }
         return orderData;
     }
@@ -41,5 +42,12 @@ public final class OrderData {
         return allOrders;
     }
 
+    public void incrementOrderNumber() {
+        this.orderNumber = this.orderNumber + 1;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
 }
 

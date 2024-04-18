@@ -163,7 +163,7 @@ public class SandwichActivity extends AppCompatActivity implements AdapterView.O
     public void addToast(){
         OrderData orderData = OrderData.getInstance();
         Toast.makeText(this,
-                orderData.getCurrentOrder().getMenuList()[orderData.getCurrentOrder().getAddIndex()-1].toString()
+                orderData.getCurrentOrder().getMenuList().get(orderData.getCurrentOrder().getAddIndex() - 1).toString()
                         +" added",
                 Toast.LENGTH_LONG).show();
     }
