@@ -22,10 +22,10 @@ Cafe Order Management System that manages the orders at RU Cafe.
   - Click on the Order Sandwiches button from the main menu. Select the bread type from the spinner, the add-ons from the multiple select list view, the protein from the spinner and the quantity from the spinner. Then click the order button, adding the specified sandwich item to the current order.
 
 ### **Current Order**
-  - Click on the Current Order button from the main menu. You will see a single select listview of all of the menu items (donuts, sandwiches and coffee) within the order you are currently placing. To remove an item from the order, select it by clicking on it and then click the Remove Item button. To place the order in its current state, click place order. The activity will reset with a new, empty order.
+  - Click on the Current Order button from the main menu. You will see a single select listview of all of the menu items (donuts, sandwiches and coffee) within the order you are currently placing. To remove an item from the order, select it by clicking on it and then click the Remove Item button. To place the order in its current state, click place order. The activity will reset with a new, empty order which you can add to in the Order Donuts, Order Coffee and Order Sandwiches activities.
 
 ### **All Orders**
-  - 
+  - Click on the All Orders button from the main menu. You will see a single select list view on top of integers, each one representing the unique order ID of each of the orders you have placed in the Current Orders view. Select an ID from the list to populate the lower listview with the menu items of that particular order. Once you have selected an order from the listview of order IDs, click the Cancel Order button to cancel it. 
 
 ## Authors
 [@Steven Rodriguez](https://github.com/BruhBruh555)
