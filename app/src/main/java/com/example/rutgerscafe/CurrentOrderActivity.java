@@ -72,6 +72,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 orderData.getAllOrders().add(orderData.getCurrentOrder());
                 orderData.incrementOrderNumber();
                 orderData.setCurrentOrder(new Order(orderData.getOrderNumber()));
+                setLv_currentOrder();
                 //placeToast();
             }
         });
